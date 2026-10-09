@@ -1,5 +1,5 @@
-:root {
-  --background-color: #161827;
-  --text: #faf9f6;
-  --margin: 0;
+body {
+  margin: 0;
+  background-color: #161827;
+  color: #fff;
 }
