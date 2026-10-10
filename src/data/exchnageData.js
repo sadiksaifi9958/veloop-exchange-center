@@ -1,0 +1,149 @@
+import gemPurple from "../assets/gems/purple-gem.webp";
+import gemBlue from "../assets/gems/blue-gem.webp";
+import gemGreen from "../assets/gems/green-gem.webp";
+import gemOrange from "../assets/gems/orange-gem.webp";
+import veCoin from "../assets/coins/ve-coin.webp";
+export const exchangeOptions = [
+  {
+    id: "exchange-01",
+    type: "gem-to-ve",
+    title: "Daily Gem Conversion",
+    description: "Convert your earned Gems into VEs instantly.",
+    requiredGems: 28,
+    receiveVEs: 151,
+    badge: "Popular",
+    theme: "purple",
+    image: gemPurple,
+  },
+  {
+    id: "exchange-02",
+    type: "gem-to-ve",
+    title: "Reward Conversion",
+    description: "Higher conversion for your better rewards.",
+    requiredGems: 39,
+    receiveVEs: 168,
+    badge: "Popular",
+    theme: "blue",
+    image: gemBlue,
+  },
+  {
+    id: "exchange-03",
+    type: "gem-to-ve",
+    title: "Value Conversion",
+    description: "Unlock greater value with more Gems.",
+    requiredGems: 57,
+    receiveVEs: 255,
+    badge: null,
+    theme: "green",
+    image: gemGreen,
+  },
+  {
+    id: "exchange-04",
+    type: "gem-to-ve",
+    title: "Premium Conversion",
+    description: "Premium conversion for premium rewards.",
+    requiredGems: 100,
+    receiveVEs: 455,
+    badge: null,
+    theme: "orange",
+    image: gemOrange,
+  },
+];
+
+export const userBalance = { gems: 420, ves: 3850 };
+
+export const recentConversions = [
+  {
+    id: "history-01",
+    gems: 28,
+    ves: 151,
+    date: "26 Aug 2026 · 04:32 PM",
+    status: "completed",
+  },
+  {
+    id: "history-02",
+    gems: 39,
+    ves: 168,
+    date: "25 Aug 2026 · 11:15 AM",
+    status: "completed",
+  },
+  {
+    id: "history-03",
+    gems: 57,
+    ves: 255,
+    date: "23 Aug 2026 · 06:40 PM",
+    status: "completed",
+  },
+  {
+    id: "history-04",
+    gems: 25,
+    ves: 112,
+    date: "20 Aug 2026 · 09:10 AM",
+    status: "processing",
+  },
+  {
+    id: "history-05",
+    gems: 28,
+    ves: 151,
+    date: "19 Aug 2026 · 03:22 PM",
+    status: "failed",
+  },
+];
+
+export const exchangeRules = [
+  "Only eligible Gems can be exchanged.",
+  "Exchange rates are predefined by VELOOP Rewards.",
+  "Available conversions may vary.",
+  "A successful conversion cannot be duplicated.",
+  "Your balance is updated after successful conversion.",
+  "Platform rules apply.",
+];
+
+export const howExchangeWorks = [
+  {
+    step: 1,
+    title: "Earn Gems",
+    description: "Complete eligible activities and earn Gems.",
+  },
+  {
+    step: 2,
+    title: "Choose Conversion",
+    description: "Select a conversion that suits your Gems balance.",
+  },
+  {
+    step: 3,
+    title: "Review Exchange",
+    description: "Review the details before confirming the conversion.",
+  },
+  {
+    step: 4,
+    title: "Confirm",
+    description: "Confirm the exchange to convert your Gems.",
+  },
+  {
+    step: 5,
+    title: "Receive VEs",
+    description: "VEs are added to your balance instantly.",
+  },
+];
+
+export const infoTooltip = {
+  gems: {
+    title: "What are Gems?",
+    text: "Gems are reward credits earned through eligible activities on VELOOP Rewards.",
+  },
+  ves: {
+    title: "What are VEs?",
+    text: "VEs are VELOOP Rewards' virtual reward currency and may be used for eligible redemption options according to platform rules.",
+  },
+  exchangeRate: {
+    title: "What is Exchange Rate?",
+    text: "Each conversion has a fixed number of required Gems and a fixed number of VEs you receive. These values are set by VELOOP Rewards.",
+  },
+  exchangeRules: {
+    title: "What are Exchange Rules?",
+    text: "These rules explain how conversions work on VELOOP Rewards. Please read them before converting.",
+  },
+};
+
+export const veCoinImage = veCoin;
