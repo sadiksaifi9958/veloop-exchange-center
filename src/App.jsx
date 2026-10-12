@@ -1,9 +1,17 @@
-import { exchangeOptions } from "./data/exchangeData";
+import { exchangeOptions, userBalance } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
+import ExchangeModal from "./components/exchange/ExchangeModal";
+import { useState } from "react";
 function App() {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [balance, setBalance] = useState(userBalance);
   function handleConvert(option) {
-    console.log(option.title);
+    setSelectedOption(option);
   }
+  function handleConfirm() {
+    console.log("confirmed");
+  }
+
   return (
     <>
       <h1>Exchange Center</h1>
@@ -16,6 +24,14 @@ function App() {
           />
         ))}
       </div>
+      {selectedOption && (
+        <ExchangeModal
+          option={selectedOption}
+          balance={balance}
+          onClose={() => setSelectedOption(null)}
+          onConfirm={handleConfirm}
+        />
+      )}
     </>
   );
 }

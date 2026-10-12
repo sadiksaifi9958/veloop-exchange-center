@@ -1,0 +1,143 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(10, 11, 20, 0.75);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100%, 26rem);
+  padding: 1.5rem;
+  background: #1d2036;
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem rgba(139, 92, 246, 0.25);
+  text-align: center;
+  animation: slideUp 0.25s ease;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.conversion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: #a9afc3;
+}
+
+.gems {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ves {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f5c451;
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a9afc3;
+}
+
+.balance {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.message {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #f5c451;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.cancelButton,
+.confirmButton {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.cancelButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.confirmButton {
+  background: #6d45c9;
+  border: 1px solid #8b5cf6;
+}
+
+.cancelButton:hover,
+.confirmButton:hover {
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+}
+
+.cancelButton:focus-visible,
+.confirmButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.cancelButton:active,
+.confirmButton:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
