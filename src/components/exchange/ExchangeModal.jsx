@@ -1,12 +1,31 @@
 import { MoveDown } from "lucide-react";
 import styles from "./ExchangeModal.module.css";
+import { useEffect } from "react";
 
-export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
+export default function ExchangeModal({
+  option,
+  balance,
+  onClose,
+  onConfirm,
+  isProcessing,
+}) {
   const canAfford = balance.gems >= option.requiredGems;
   const missingGems = option.requiredGems - balance.gems;
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape" && !isProcessing) onClose();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose, isProcessing]);
+
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div
+      className={styles.overlay}
+      onClick={isProcessing ? undefined : onClose}
+    >
       <div
         className={styles.modal}
         role="dialog"
@@ -36,6 +55,7 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
                 className={styles.cancelButton}
                 onClick={onClose}
                 type="button"
+                disabled={isProcessing}
               >
                 Cancel
               </button>
@@ -43,8 +63,9 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
                 className={styles.confirmButton}
                 onClick={() => onConfirm(option)}
                 type="button"
+                disabled={isProcessing}
               >
-                Convert
+                {isProcessing ? "Converting..." : "Convert"}
               </button>
             </div>
           </>
@@ -53,7 +74,7 @@ export default function ExchangeModal({ option, balance, onClose, onConfirm }) {
             <h2 id="modal-title" className={styles.title}>
               Not enough Gems
             </h2>
-            <p className={styles.balance}>Your Gems: {balance.gems}</p>
+            <p className={styles.balance}>Earned Gems: {balance.gems}</p>
             <p className={styles.balance}>
               Required Gems: {option.requiredGems}
             </p>

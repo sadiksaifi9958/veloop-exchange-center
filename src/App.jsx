@@ -5,11 +5,20 @@ import { useState } from "react";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
+  const [isProcessing, setIsProcessing] = useState(false);
   function handleConvert(option) {
     setSelectedOption(option);
   }
-  function handleConfirm() {
-    console.log("confirmed");
+  function handleConfirm(option) {
+    setIsProcessing(true);
+    setTimeout(() => {
+      setBalance((prevBalance) => ({
+        gems: prevBalance.gems - option.requiredGems,
+        ves: prevBalance.ves + option.receiveVEs,
+      }));
+      setSelectedOption(null);
+      setIsProcessing(false);
+    }, 1500);
   }
 
   return (
@@ -30,8 +39,12 @@ function App() {
           balance={balance}
           onClose={() => setSelectedOption(null)}
           onConfirm={handleConfirm}
+          isProcessing={isProcessing}
         />
       )}
+      <p>
+        gems: {balance.gems}, ves: {balance.ves}
+      </p>
     </>
   );
 }
