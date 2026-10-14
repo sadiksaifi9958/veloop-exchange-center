@@ -2,12 +2,13 @@ import { exchangeOptions, userBalance } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
 import ConversionSuccess from "./components/exchange/ConversionSuccess";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
   const [isProcessing, setIsProcessing] = useState(false);
   const [completedOption, setCompletedOption] = useState(null);
+  const [pageStatus, setPageStatus] = useState("loading");
   function handleConvert(option) {
     setSelectedOption(option);
   }
@@ -28,6 +29,32 @@ function App() {
     setCompletedOption(null);
   }
 
+  useEffect(() => {
+    if (pageStatus !== "loading") return;
+
+    const timerId = setTimeout(() => {
+      setPageStatus("ready");
+    }, 1500);
+
+    return () => clearTimeout(timerId);
+  }, [pageStatus]);
+
+  if (pageStatus === "loading") {
+    return <p>Preparing your reward conversions...</p>;
+  }
+  if (pageStatus === "error") {
+    return (
+      <>
+        <p>Unable to load exchange options. Please try again.</p>
+        <button onClick={() => setPageStatus("loading")} type="button">
+          Retry
+        </button>
+      </>
+    );
+  }
+  if (exchangeOptions.length === 0) {
+    return <p>No conversions available right now.</p>;
+  }
   return (
     <>
       <h1>Exchange Center</h1>

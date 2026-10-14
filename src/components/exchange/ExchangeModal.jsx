@@ -1,6 +1,11 @@
 import { MoveDown } from "lucide-react";
+import { useEffect, useRef } from "react";
 import styles from "./ExchangeModal.module.css";
-import { useEffect } from "react";
+import { veCoinImage } from "../../data/exchangeData";
+
+function formatNumber(value) {
+  return value.toLocaleString("en-US");
+}
 
 export default function ExchangeModal({
   option,
@@ -9,8 +14,13 @@ export default function ExchangeModal({
   onConfirm,
   isProcessing,
 }) {
+  const initialFocusRef = useRef(null);
   const canAfford = balance.gems >= option.requiredGems;
   const missingGems = option.requiredGems - balance.gems;
+
+  useEffect(() => {
+    initialFocusRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -27,10 +37,11 @@ export default function ExchangeModal({
       onClick={isProcessing ? undefined : onClose}
     >
       <div
-        className={styles.modal}
+        className={`${styles.modal} ${styles[option.theme]}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
+        aria-busy={isProcessing}
         onClick={(event) => event.stopPropagation()}
       >
         {canAfford ? (
@@ -39,19 +50,33 @@ export default function ExchangeModal({
               Confirm Conversion
             </h2>
             <div className={styles.conversion}>
-              <span className={styles.gems}>{option.requiredGems} Gems</span>
+              <div className={styles.item}>
+                <img src={option.image} alt={`${option.theme} gem`} />
+                <span className={styles.gem}>{option.requiredGems} Gems</span>
+              </div>
               <MoveDown size={20} aria-hidden="true" />
-              <span className={styles.ves}>{option.receiveVEs} VEs</span>
+              <div className={styles.item}>
+                <img src={veCoinImage} alt="VE coin" />
+                <span className={styles.vecoin}>{option.receiveVEs} VEs</span>
+              </div>
             </div>
-            <h4 className={styles.subtitle}>After conversion your balance</h4>
-            <p className={styles.balance}>
-              {balance.gems - option.requiredGems} Gems
-            </p>
-            <p className={styles.balance}>
-              {balance.ves + option.receiveVEs} VEs
-            </p>
+            <dl className={styles.summary}>
+              <div className={styles.row}>
+                <dt className={styles.label}>Gems after conversion</dt>
+                <dd className={styles.value}>
+                  {formatNumber(balance.gems - option.requiredGems)}
+                </dd>
+              </div>
+              <div className={styles.row}>
+                <dt className={styles.label}>VEs after conversion</dt>
+                <dd className={styles.value}>
+                  {formatNumber(balance.ves + option.receiveVEs)}
+                </dd>
+              </div>
+            </dl>
             <div className={styles.actions}>
               <button
+                ref={initialFocusRef}
                 className={styles.cancelButton}
                 onClick={onClose}
                 type="button"
@@ -65,7 +90,7 @@ export default function ExchangeModal({
                 type="button"
                 disabled={isProcessing}
               >
-                {isProcessing ? "Converting..." : "Convert"}
+                {isProcessing ? "Converting..." : "Confirm Conversion"}
               </button>
             </div>
           </>
@@ -74,22 +99,39 @@ export default function ExchangeModal({
             <h2 id="modal-title" className={styles.title}>
               Not enough Gems
             </h2>
-            <p className={styles.balance}>Earned Gems: {balance.gems}</p>
-            <p className={styles.balance}>
-              Required Gems: {option.requiredGems}
-            </p>
+            <div className={styles.item}>
+              <img src={option.image} alt={`${option.theme} gem`} />
+            </div>
+            <dl className={styles.summary}>
+              <div className={styles.row}>
+                <dt className={styles.label}>Available Gems</dt>
+                <dd className={styles.value}>{formatNumber(balance.gems)}</dd>
+              </div>
+              <div className={styles.row}>
+                <dt className={styles.label}>Required Gems</dt>
+                <dd className={styles.value}>
+                  {formatNumber(option.requiredGems)}
+                </dd>
+              </div>
+            </dl>
             <p className={styles.message}>
-              You need {missingGems} more Gems to unlock this conversion.
+              You need {formatNumber(missingGems)} more Gems to unlock this
+              conversion.
             </p>
             <div className={styles.actions}>
               <button
+                ref={initialFocusRef}
                 className={styles.cancelButton}
                 onClick={onClose}
                 type="button"
               >
                 Close
               </button>
-              <button className={styles.confirmButton} type="button">
+              <button
+                className={`${styles.confirmButton} ${styles.earnButton}`}
+                onClick={onClose}
+                type="button"
+              >
                 Earn More Gems
               </button>
             </div>
