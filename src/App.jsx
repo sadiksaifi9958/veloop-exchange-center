@@ -3,6 +3,7 @@ import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
 import ConversionSuccess from "./components/exchange/ConversionSuccess";
 import { useState, useEffect } from "react";
+import BalanceOverview from "./components/exchange/BalanceOverview";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
@@ -58,9 +59,7 @@ function App() {
   return (
     <>
       <h1>Exchange Center</h1>
-      <h4>
-        Earned Gems: {balance.gems}, VEs Coin: {balance.ves}
-      </h4>
+      <BalanceOverview balance={balance} />
       <div className="cards-grid">
         {exchangeOptions.map((option) => (
           <ExchangeCard
