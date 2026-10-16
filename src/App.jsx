@@ -3,6 +3,7 @@ import {
   userBalance,
   howExchangeWorks,
   recentConversions,
+  exchangeRules,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -11,6 +12,7 @@ import { useState, useEffect } from "react";
 import BalanceOverview from "./components/exchange/BalanceOverview";
 import HowExchangeWorks from "./components/exchange/HowExchangeWorks";
 import ExchangeHistory from "./components/exchange/ExchangeHistory";
+import ExchangeRules from "./components/exchange/ExchangeRules";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
@@ -90,6 +92,7 @@ function App() {
       )}
       <HowExchangeWorks steps={howExchangeWorks} />
       <ExchangeHistory items={recentConversions} />
+      <ExchangeRules rules={exchangeRules} />
     </>
   );
 }
