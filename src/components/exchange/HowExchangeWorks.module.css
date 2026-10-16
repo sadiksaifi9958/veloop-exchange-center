@@ -1,0 +1,133 @@
+.section {
+  padding: 1.25rem;
+  background: linear-gradient(165deg, #1d2036, #161827 80%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: calc(100% - 3rem);
+  margin-bottom: 2rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.infoButton {
+  display: inline-flex;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #a9afc3;
+  cursor: pointer;
+}
+
+.infoButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1.75rem;
+  left: calc(50% + 2.4rem);
+  width: calc(100% - 4.8rem);
+  border-top: 2px dotted rgba(255, 255, 255, 0.25);
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 30%, #161827),
+    #161827
+  );
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--accent);
+}
+
+.circle img {
+  width: 70%;
+  object-fit: contain;
+}
+
+.number {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.description {
+  margin: 0;
+  max-width: 12rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #a9afc3;
+}
+
+.purple {
+  --accent: #a78bfa;
+}
+.blue {
+  --accent: #3b82f6;
+}
+.teal {
+  --accent: #14b8a6;
+}
+.gold {
+  --accent: #f5c451;
+}
+.green {
+  --accent: #22c55e;
+}
+
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .step:not(:last-child)::after {
+    display: none;
+  }
+}

@@ -3,6 +3,7 @@ import gemBlue from "../assets/gems/blue-gem.webp";
 import gemGreen from "../assets/gems/green-gem.webp";
 import gemOrange from "../assets/gems/orange-gem.webp";
 import veCoin from "../assets/coins/ve-coin.webp";
+import { ListChecks, Search, ShieldCheck } from "lucide-react";
 export const exchangeOptions = [
   {
     id: "exchange-01",
@@ -104,26 +105,36 @@ export const howExchangeWorks = [
     step: 1,
     title: "Earn Gems",
     description: "Complete eligible activities and earn Gems.",
+    image: gemPurple,
+    theme: "purple",
   },
   {
     step: 2,
     title: "Choose Conversion",
     description: "Select a conversion that suits your Gems balance.",
+    icon: ListChecks,
+    theme: "blue",
   },
   {
     step: 3,
     title: "Review Exchange",
     description: "Review the details before confirming the conversion.",
+    icon: Search,
+    theme: "teal",
   },
   {
     step: 4,
     title: "Confirm",
     description: "Confirm the exchange to convert your Gems.",
+    icon: ShieldCheck,
+    theme: "gold",
   },
   {
     step: 5,
     title: "Receive VEs",
     description: "VEs are added to your balance instantly.",
+    image: veCoin,
+    theme: "gold",
   },
 ];
 

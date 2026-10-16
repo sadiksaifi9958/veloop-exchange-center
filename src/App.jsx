@@ -1,9 +1,14 @@
-import { exchangeOptions, userBalance } from "./data/exchangeData";
+import {
+  exchangeOptions,
+  userBalance,
+  howExchangeWorks,
+} from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
 import ConversionSuccess from "./components/exchange/ConversionSuccess";
 import { useState, useEffect } from "react";
 import BalanceOverview from "./components/exchange/BalanceOverview";
+import HowExchangeWorks from "./components/exchange/HowExchangeWorks";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
@@ -81,6 +86,7 @@ function App() {
       {completedOption && (
         <ConversionSuccess option={completedOption} onContinue={onContinue} />
       )}
+      <HowExchangeWorks steps={howExchangeWorks} />
     </>
   );
 }
