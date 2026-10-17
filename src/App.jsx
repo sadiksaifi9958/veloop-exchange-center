@@ -84,7 +84,7 @@ function App() {
         <p className={styles.subheading}>
           Choose a conversion that works best for you.
         </p>
-        <div className="cards-grid">
+        <div className={styles.cardsGrid}>
           {exchangeOptions.map((option) => (
             <ExchangeCard
               key={option.id}

@@ -3,10 +3,3 @@ body {
   background-color: #161827;
   color: #fff;
 }
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
