@@ -4,6 +4,7 @@ import {
   howExchangeWorks,
   recentConversions,
   exchangeRules,
+  infoTooltip,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -13,6 +14,7 @@ import BalanceOverview from "./components/exchange/BalanceOverview";
 import HowExchangeWorks from "./components/exchange/HowExchangeWorks";
 import ExchangeHistory from "./components/exchange/ExchangeHistory";
 import ExchangeRules from "./components/exchange/ExchangeRules";
+import InfoTooltip from "./components/exchange/InfoTooltip";
 import styles from "./App.module.css";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -70,15 +72,28 @@ function App() {
     <>
       <h1>Exchange Center</h1>
       <BalanceOverview balance={balance} />
-      <div className="cards-grid">
-        {exchangeOptions.map((option) => (
-          <ExchangeCard
-            key={option.id}
-            option={option}
-            onConvert={handleConvert}
+      <section className={styles.conversions}>
+        <h2 className={styles.heading}>
+          Available Conversions{" "}
+          <InfoTooltip
+            title={infoTooltip.exchangeRate.title}
+            text={infoTooltip.exchangeRate.text}
+            label="About Exchange rate"
           />
-        ))}
-      </div>
+        </h2>
+        <p className={styles.subheading}>
+          Choose a conversion that works best for you.
+        </p>
+        <div className="cards-grid">
+          {exchangeOptions.map((option) => (
+            <ExchangeCard
+              key={option.id}
+              option={option}
+              onConvert={handleConvert}
+            />
+          ))}
+        </div>
+      </section>
       {selectedOption && (
         <ExchangeModal
           option={selectedOption}
