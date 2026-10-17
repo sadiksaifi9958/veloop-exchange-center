@@ -160,6 +160,10 @@ export const infoTooltip = {
     title: "What are Exchange Rules?",
     text: "These rules explain how conversions work on VELOOP Rewards. Please read them before converting.",
   },
+  howItWorks: {
+    title: "How Exchange Works",
+    text: "Follow these 5 simple steps to convert your earned Gems into VEs.",
+  },
 };
 
 export const veCoinImage = veCoin;

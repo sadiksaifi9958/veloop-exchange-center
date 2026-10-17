@@ -1,17 +1,18 @@
-import { Info, CircleCheck } from "lucide-react";
+import { CircleCheck } from "lucide-react";
+import InfoTooltip from "./InfoTooltip";
+import { infoTooltip } from "../../data/exchangeData";
 import styles from "./ExchangeRules.module.css";
+
 function ExchangeRules({ rules }) {
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>
         Exchange Rules
-        <button
-          type="button"
-          aria-label="About Exchange Rules"
-          className={styles.info}
-        >
-          <Info aria-hidden="true" />
-        </button>
+        <InfoTooltip
+          title={infoTooltip.exchangeRules.title}
+          text={infoTooltip.exchangeRules.text}
+          label="About Exchange Rules"
+        />
       </h2>
       <ul className={styles.list}>
         {rules.map((item) => (

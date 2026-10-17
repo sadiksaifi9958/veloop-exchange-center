@@ -1,25 +1,27 @@
-import { veCoinImage } from "../../data/exchangeData";
 import gemImage from "../../assets/gems/purple-gem.webp";
 import styles from "./BalanceOverview.module.css";
-import { Info } from "lucide-react";
+import InfoTooltip from "./InfoTooltip";
+import { infoTooltip, veCoinImage } from "../../data/exchangeData";
 
 function BalanceOverview({ balance }) {
   const balanceItems = [
     {
-      id: "gem",
+      id: "Gems",
       value: balance.gems,
       title: "Available Gems",
       subtitle: "Your Reward Gems",
       image: gemImage,
       theme: "purple",
+      infoKey: "gems",
     },
     {
-      id: "ves",
+      id: "VEs",
       value: balance.ves,
       title: "Available VEs",
       subtitle: "Your VE Balance",
       image: veCoinImage,
       theme: "gold",
+      infoKey: "ves",
     },
   ];
   return (
@@ -28,9 +30,11 @@ function BalanceOverview({ balance }) {
         <div key={item.id} className={`${styles.box} ${styles[item.theme]}`}>
           <div className={styles.labelRow}>
             <p>{item.title}</p>
-            <button type="button" aria-label={`About ${item.title}`}>
-              <Info aria-hidden="true" />
-            </button>
+            <InfoTooltip
+              title={infoTooltip[item.infoKey].title}
+              text={infoTooltip[item.infoKey].text}
+              label={`About ${item.id}`}
+            />
           </div>
           <div className={styles.valueRow}>
             <img src={item.image} className={styles.image} alt="" />
@@ -39,12 +43,14 @@ function BalanceOverview({ balance }) {
             </span>
           </div>
           <p className={styles.subtitle}>{item.subtitle}</p>
-          <img
-            src={item.image}
-            aria-hidden="true"
-            alt=""
-            className={styles.watermark}
-          />
+          <div className={styles.imageWrap}>
+            <img
+              src={item.image}
+              aria-hidden="true"
+              alt=""
+              className={styles.watermark}
+            />
+          </div>
         </div>
       ))}
     </section>

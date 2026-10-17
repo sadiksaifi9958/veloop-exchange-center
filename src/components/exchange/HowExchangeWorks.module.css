@@ -3,11 +3,6 @@
   background: linear-gradient(165deg, #1d2036, #161827 80%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
-  max-width: 80rem;
-  margin: 0 auto;
-  box-sizing: border-box;
-  width: calc(100% - 3rem);
-  margin-bottom: 2rem;
 }
 
 .title {
@@ -18,20 +13,6 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
-}
-
-.infoButton {
-  display: inline-flex;
-  padding: 0;
-  background: none;
-  border: none;
-  color: #a9afc3;
-  cursor: pointer;
-}
-
-.infoButton:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
 }
 
 .steps {

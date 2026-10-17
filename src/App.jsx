@@ -13,6 +13,7 @@ import BalanceOverview from "./components/exchange/BalanceOverview";
 import HowExchangeWorks from "./components/exchange/HowExchangeWorks";
 import ExchangeHistory from "./components/exchange/ExchangeHistory";
 import ExchangeRules from "./components/exchange/ExchangeRules";
+import styles from "./App.module.css";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
@@ -90,9 +91,11 @@ function App() {
       {completedOption && (
         <ConversionSuccess option={completedOption} onContinue={onContinue} />
       )}
-      <HowExchangeWorks steps={howExchangeWorks} />
-      <ExchangeHistory items={recentConversions} />
-      <ExchangeRules rules={exchangeRules} />
+      <div className={styles.sections}>
+        <HowExchangeWorks steps={howExchangeWorks} />
+        <ExchangeHistory items={recentConversions} />
+        <ExchangeRules rules={exchangeRules} />
+      </div>
     </>
   );
 }

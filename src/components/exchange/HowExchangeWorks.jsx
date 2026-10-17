@@ -1,17 +1,16 @@
-import { Info } from "lucide-react";
 import styles from "./HowExchangeWorks.module.css";
+import InfoTooltip from "./InfoTooltip";
+import { infoTooltip } from "../../data/exchangeData";
 function HowExchangeWorks({ steps }) {
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>
         How Exchange Works{" "}
-        <button
-          type="button"
-          aria-label="About How Exchange Works"
-          className={styles.infoButton}
-        >
-          <Info aria-hidden="true" />
-        </button>
+        <InfoTooltip
+          title={infoTooltip.howItWorks.title}
+          text={infoTooltip.howItWorks.text}
+          label="About How Exchange Works"
+        />
       </h2>
       <ol className={styles.steps}>
         {steps.map((item) => {
