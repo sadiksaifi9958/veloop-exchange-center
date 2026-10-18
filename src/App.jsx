@@ -16,6 +16,7 @@ import ExchangeHistory from "./components/exchange/ExchangeHistory";
 import ExchangeRules from "./components/exchange/ExchangeRules";
 import InfoTooltip from "./components/exchange/InfoTooltip";
 import styles from "./App.module.css";
+import ExchangeLoader from "./components/exchange/ExchangeLoader";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
@@ -47,13 +48,13 @@ function App() {
 
     const timerId = setTimeout(() => {
       setPageStatus("ready");
-    }, 1500);
+    }, 4000);
 
     return () => clearTimeout(timerId);
   }, [pageStatus]);
 
   if (pageStatus === "loading") {
-    return <p>Preparing your reward conversions...</p>;
+    return <ExchangeLoader />;
   }
   if (pageStatus === "error") {
     return (

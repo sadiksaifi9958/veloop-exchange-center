@@ -1,0 +1,101 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 60vh;
+}
+
+.visual {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  perspective: 600px;
+}
+
+.gem,
+.coin {
+  width: 5rem;
+  height: auto;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #a9afc3;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: #f5c451;
+}
+
+.arrowRight {
+  animation: spinRight 1.6s ease-in-out infinite;
+}
+
+.arrowLeft {
+  animation: spinLeft 1.6s ease-in-out infinite;
+}
+
+.gem {
+  animation: float 1.6s ease-in-out infinite;
+}
+
+.coin {
+  animation: float 1.6s ease-in-out 0.4s infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes spinRight {
+  0% {
+    transform: rotateX(0deg) translateX(0);
+  }
+  50% {
+    transform: rotateX(180deg) translateX(1rem);
+  }
+  100% {
+    transform: rotateX(360deg) translateX(0);
+  }
+}
+
+@keyframes spinLeft {
+  0% {
+    transform: rotateX(0deg) translateX(0);
+  }
+  50% {
+    transform: rotateX(-180deg) translateX(-1rem);
+  }
+  100% {
+    transform: rotateX(-360deg) translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gem,
+  .coin,
+  .arrowRight,
+  .arrowLeft {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow,
+  .gem,
+  .coin {
+    animation: none;
+  }
+}

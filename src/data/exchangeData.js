@@ -167,3 +167,4 @@ export const infoTooltip = {
 };
 
 export const veCoinImage = veCoin;
+export const gemPurpleImage = gemPurple;
