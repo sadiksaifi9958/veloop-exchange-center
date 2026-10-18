@@ -3,6 +3,7 @@ import gemBlue from "../assets/gems/blue-gem.webp";
 import gemGreen from "../assets/gems/green-gem.webp";
 import gemOrange from "../assets/gems/orange-gem.webp";
 import veCoin from "../assets/coins/ve-coin.webp";
+import heroImage from "../assets/hero/portal.png";
 import { ListChecks, Search, ShieldCheck } from "lucide-react";
 export const exchangeOptions = [
   {
@@ -183,4 +184,12 @@ export const statusMessages = {
     message: "Please try again.",
     actionLabel: "Retry",
   },
+};
+
+export const heroContent = {
+  title: "Exchange Center",
+  subtitle: "Turn Your Earned Gems into VEs",
+  description:
+    "Convert your eligible Gems into VEs and continue your reward journey.",
+  image: heroImage,
 };

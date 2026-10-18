@@ -11,7 +11,6 @@ import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
 import ConversionSuccess from "./components/exchange/ConversionSuccess";
 import { useState, useEffect } from "react";
-import BalanceOverview from "./components/exchange/BalanceOverview";
 import HowExchangeWorks from "./components/exchange/HowExchangeWorks";
 import ExchangeHistory from "./components/exchange/ExchangeHistory";
 import ExchangeRules from "./components/exchange/ExchangeRules";
@@ -19,6 +18,7 @@ import InfoTooltip from "./components/exchange/InfoTooltip";
 import styles from "./App.module.css";
 import ExchangeLoader from "./components/exchange/ExchangeLoader";
 import ExchangeStatus from "./components/exchange/ExchangeStatus";
+import ExchangeHero from "./components/exchange/ExchangeHero";
 
 const VALID_STATES = ["loading", "error", "empty"];
 
@@ -91,8 +91,7 @@ function App() {
   }
   return (
     <>
-      <h1>Exchange Center</h1>
-      <BalanceOverview balance={balance} />
+      <ExchangeHero balance={balance} />
       <section className={styles.conversions}>
         <h2 className={styles.heading}>
           Available Conversions{" "}
