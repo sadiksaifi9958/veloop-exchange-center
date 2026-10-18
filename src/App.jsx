@@ -19,12 +19,21 @@ import InfoTooltip from "./components/exchange/InfoTooltip";
 import styles from "./App.module.css";
 import ExchangeLoader from "./components/exchange/ExchangeLoader";
 import ExchangeStatus from "./components/exchange/ExchangeStatus";
+
+const VALID_STATES = ["loading", "error", "empty"];
+
+function getForcedState() {
+  const state = new URLSearchParams(window.location.search).get("state");
+  return VALID_STATES.includes(state) ? state : null;
+}
+
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
   const [isProcessing, setIsProcessing] = useState(false);
   const [completedOption, setCompletedOption] = useState(null);
-  const [pageStatus, setPageStatus] = useState("loading");
+  const forcedState = getForcedState();
+  const [pageStatus, setPageStatus] = useState(forcedState ?? "loading");
   function handleConvert(option) {
     setSelectedOption(option);
   }
@@ -46,14 +55,14 @@ function App() {
   }
 
   useEffect(() => {
-    if (pageStatus !== "loading") return;
+    if (pageStatus !== "loading" || forcedState === "loading") return;
 
     const timerId = setTimeout(() => {
       setPageStatus("ready");
     }, 4000);
 
     return () => clearTimeout(timerId);
-  }, [pageStatus]);
+  }, [pageStatus, forcedState]);
 
   if (pageStatus === "loading") {
     return <ExchangeLoader />;
@@ -71,7 +80,7 @@ function App() {
       </>
     );
   }
-  if (exchangeOptions.length === 0) {
+  if (pageStatus === "empty" || exchangeOptions.length === 0) {
     return (
       <ExchangeStatus
         variant="empty"
