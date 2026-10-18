@@ -168,3 +168,19 @@ export const infoTooltip = {
 
 export const veCoinImage = veCoin;
 export const gemPurpleImage = gemPurple;
+
+export const statusMessages = {
+  loading: {
+    message: "Preparing your reward conversions...",
+  },
+  empty: {
+    title: "No conversions available right now.",
+    message:
+      "New reward conversion opportunities will appear here when available.",
+  },
+  error: {
+    title: "Unable to load exchange options.",
+    message: "Please try again.",
+    actionLabel: "Retry",
+  },
+};

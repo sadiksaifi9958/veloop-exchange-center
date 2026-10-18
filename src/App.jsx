@@ -5,6 +5,7 @@ import {
   recentConversions,
   exchangeRules,
   infoTooltip,
+  statusMessages,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -17,6 +18,7 @@ import ExchangeRules from "./components/exchange/ExchangeRules";
 import InfoTooltip from "./components/exchange/InfoTooltip";
 import styles from "./App.module.css";
 import ExchangeLoader from "./components/exchange/ExchangeLoader";
+import ExchangeStatus from "./components/exchange/ExchangeStatus";
 function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [balance, setBalance] = useState(userBalance);
@@ -59,15 +61,24 @@ function App() {
   if (pageStatus === "error") {
     return (
       <>
-        <p>Unable to load exchange options. Please try again.</p>
-        <button onClick={() => setPageStatus("loading")} type="button">
-          Retry
-        </button>
+        <ExchangeStatus
+          variant="error"
+          title={statusMessages.error.title}
+          message={statusMessages.error.message}
+          actionLabel={statusMessages.error.actionLabel}
+          onAction={() => setPageStatus("loading")}
+        />
       </>
     );
   }
   if (exchangeOptions.length === 0) {
-    return <p>No conversions available right now.</p>;
+    return (
+      <ExchangeStatus
+        variant="empty"
+        title={statusMessages.empty.title}
+        message={statusMessages.empty.message}
+      />
+    );
   }
   return (
     <>
