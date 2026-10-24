@@ -5,7 +5,7 @@ import styles from "./ExchangeRules.module.css";
 
 function ExchangeRules({ rules }) {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="exchange-rules">
       <h2 className={styles.title}>
         Exchange Rules
         <InfoTooltip

@@ -171,6 +171,21 @@ export const infoTooltip = {
 export const veCoinImage = veCoin;
 export const gemPurpleImage = gemPurple;
 
+export const whatAreThese = [
+  {
+    id: 1,
+    name: "Gems",
+    text: infoTooltip.gems.text,
+    image: gemPurple,
+  },
+  {
+    id: 2,
+    name: "VEs",
+    text: infoTooltip.ves.text,
+    image: veCoin,
+  },
+];
+
 export const statusMessages = {
   loading: {
     message: "Preparing your reward conversions...",

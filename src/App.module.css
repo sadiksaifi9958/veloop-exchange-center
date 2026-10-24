@@ -38,6 +38,7 @@
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 0 2rem;
+  padding-inline: 1rem;
 }
 
 .main,
@@ -48,8 +49,23 @@
   min-width: 0;
 }
 
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: stretch;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  max-width: 80rem;
+  margin: 1.5rem auto;
+  padding-inline: 1rem;
+}
+
 @media (max-width: 900px) {
   .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .top {
     grid-template-columns: 1fr;
   }
 }

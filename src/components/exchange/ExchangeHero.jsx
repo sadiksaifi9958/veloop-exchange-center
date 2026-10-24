@@ -1,6 +1,6 @@
 import { heroContent } from "../../data/exchangeData";
 import BalanceOverview from "./BalanceOverview";
-import styles from "../..//components/exchange/ExchangeHero.module.css";
+import styles from "./ExchangeHero.module.css";
 function ExchangeHero({ balance }) {
   return (
     <section className={styles.hero}>

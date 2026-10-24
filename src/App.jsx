@@ -7,6 +7,7 @@ import {
   infoTooltip,
   statusMessages,
   rewardBanner,
+  whatAreThese,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -21,6 +22,7 @@ import ExchangeLoader from "./components/exchange/ExchangeLoader";
 import ExchangeStatus from "./components/exchange/ExchangeStatus";
 import ExchangeHero from "./components/exchange/ExchangeHero";
 import RewardBanner from "./components/exchange/RewardBanner";
+import WhatAreThese from "./components/exchange/WhatAreThese";
 
 const VALID_STATES = ["loading", "error", "empty"];
 
@@ -93,7 +95,10 @@ function App() {
   }
   return (
     <>
-      <ExchangeHero balance={balance} />
+      <div className={styles.top}>
+        <ExchangeHero balance={balance} />
+        <WhatAreThese items={whatAreThese} />
+      </div>
       <div className={styles.layout}>
         <div className={styles.main}>
           <section className={styles.conversions}>
