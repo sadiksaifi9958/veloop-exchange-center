@@ -92,28 +92,37 @@ function App() {
   return (
     <>
       <ExchangeHero balance={balance} />
-      <section className={styles.conversions}>
-        <h2 className={styles.heading}>
-          Available Conversions{" "}
-          <InfoTooltip
-            title={infoTooltip.exchangeRate.title}
-            text={infoTooltip.exchangeRate.text}
-            label="About Exchange rate"
-          />
-        </h2>
-        <p className={styles.subheading}>
-          Choose a conversion that works best for you.
-        </p>
-        <div className={styles.cardsGrid}>
-          {exchangeOptions.map((option) => (
-            <ExchangeCard
-              key={option.id}
-              option={option}
-              onConvert={handleConvert}
-            />
-          ))}
+      <div className={styles.layout}>
+        <div className={styles.main}>
+          <section className={styles.conversions}>
+            <h2 className={styles.heading}>
+              Available Conversions{" "}
+              <InfoTooltip
+                title={infoTooltip.exchangeRate.title}
+                text={infoTooltip.exchangeRate.text}
+                label="About Exchange rate"
+              />
+            </h2>
+            <p className={styles.subheading}>
+              Choose a conversion that works best for you.
+            </p>
+            <div className={styles.cardsGrid}>
+              {exchangeOptions.map((option) => (
+                <ExchangeCard
+                  key={option.id}
+                  option={option}
+                  onConvert={handleConvert}
+                />
+              ))}
+            </div>
+          </section>
+          <HowExchangeWorks steps={howExchangeWorks} />
         </div>
-      </section>
+        <aside className={styles.side}>
+          <ExchangeHistory items={recentConversions} />
+          <ExchangeRules rules={exchangeRules} />
+        </aside>
+      </div>
       {selectedOption && (
         <ExchangeModal
           option={selectedOption}
@@ -126,11 +135,6 @@ function App() {
       {completedOption && (
         <ConversionSuccess option={completedOption} onContinue={onContinue} />
       )}
-      <div className={styles.sections}>
-        <HowExchangeWorks steps={howExchangeWorks} />
-        <ExchangeHistory items={recentConversions} />
-        <ExchangeRules rules={exchangeRules} />
-      </div>
     </>
   );
 }
