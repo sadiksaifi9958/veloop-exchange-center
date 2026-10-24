@@ -6,6 +6,7 @@ import {
   exchangeRules,
   infoTooltip,
   statusMessages,
+  rewardBanner,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -19,6 +20,7 @@ import styles from "./App.module.css";
 import ExchangeLoader from "./components/exchange/ExchangeLoader";
 import ExchangeStatus from "./components/exchange/ExchangeStatus";
 import ExchangeHero from "./components/exchange/ExchangeHero";
+import RewardBanner from "./components/exchange/RewardBanner";
 
 const VALID_STATES = ["loading", "error", "empty"];
 
@@ -116,6 +118,7 @@ function App() {
               ))}
             </div>
           </section>
+          <RewardBanner content={rewardBanner} />
           <HowExchangeWorks steps={howExchangeWorks} />
         </div>
         <aside className={styles.side}>

@@ -5,6 +5,7 @@ import gemOrange from "../assets/gems/orange-gem.webp";
 import veCoin from "../assets/coins/ve-coin.webp";
 import heroImage from "../assets/hero/portal.png";
 import { ListChecks, Search, ShieldCheck } from "lucide-react";
+import chestImage from "../assets/hero/chest.png";
 export const exchangeOptions = [
   {
     id: "exchange-01",
@@ -192,4 +193,10 @@ export const heroContent = {
   description:
     "Convert your eligible Gems into VEs and continue your reward journey.",
   image: heroImage,
+};
+
+export const rewardBanner = {
+  title: "The more Gems you have, the better the rewards you unlock!",
+  subtitle: "Keep earning and keep growing.",
+  image: chestImage,
 };
