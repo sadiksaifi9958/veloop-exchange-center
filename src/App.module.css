@@ -38,14 +38,14 @@
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 0 2rem;
-  padding-inline: 1rem;
+  padding-inline: 0.75rem;
 }
 
 .main,
 .side {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   min-width: 0;
 }
 
@@ -57,7 +57,7 @@
   box-sizing: border-box;
   max-width: 80rem;
   margin: 1.5rem auto;
-  padding-inline: 1rem;
+  padding-inline: 0.75rem;
 }
 
 @media (max-width: 900px) {
