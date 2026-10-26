@@ -4,7 +4,7 @@ import gemGreen from "../assets/gems/green-gem.webp";
 import gemOrange from "../assets/gems/orange-gem.webp";
 import veCoin from "../assets/coins/ve-coin.webp";
 import heroImage from "../assets/hero/portal.png";
-import { ListChecks, Search, ShieldCheck } from "lucide-react";
+import { ListChecks, Search, ShieldCheck, Check, Clock, X } from "lucide-react";
 import chestImage from "../assets/hero/chest.png";
 export const exchangeOptions = [
   {
@@ -220,4 +220,10 @@ export const historyLabels = {
   title: "Recent Conversions",
   viewAll: "View All",
   viewFullHistory: "View Full History",
+};
+
+export const statusConfig = {
+  Completed: { icon: Check },
+  Processing: { icon: Clock },
+  Failed: { icon: X },
 };

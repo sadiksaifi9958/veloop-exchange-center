@@ -152,6 +152,14 @@
   font-size: 0.75rem;
   font-weight: 600;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status svg {
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
 .Completed {

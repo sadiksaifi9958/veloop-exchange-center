@@ -9,6 +9,7 @@ import {
   rewardBanner,
   whatAreThese,
   historyLabels,
+  statusConfig,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -128,7 +129,11 @@ function App() {
           <HowExchangeWorks steps={howExchangeWorks} />
         </div>
         <aside className={styles.side}>
-          <ExchangeHistory items={recentConversions} labels={historyLabels} />
+          <ExchangeHistory
+            items={recentConversions}
+            labels={historyLabels}
+            statusConfig={statusConfig}
+          />
           <ExchangeRules rules={exchangeRules} />
         </aside>
       </div>
