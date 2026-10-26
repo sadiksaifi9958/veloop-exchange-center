@@ -1,10 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { veCoinImage } from "../../data/exchangeData";
 import styles from "./ExchangeHistory.module.css";
-function ExchangeHistory({ items }) {
+import { History, ChevronRight } from "lucide-react";
+function ExchangeHistory({ items, labels }) {
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>Recent Conversions</h2>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{labels.title}</h2>
+        <button type="button" className={styles.viewAll}>
+          {labels.viewAll}
+        </button>
+      </div>
       <ul className={styles.list}>
         {items.map((item) => (
           <li key={item.id} className={styles.item}>
@@ -25,6 +31,12 @@ function ExchangeHistory({ items }) {
           </li>
         ))}
       </ul>
+      <button type="button" className={styles.fullHistory}>
+        <span>
+          <History aria-hidden="true" /> {labels.viewFullHistory}
+        </span>
+        <ChevronRight aria-hidden="true" />
+      </button>
     </section>
   );
 }

@@ -215,3 +215,9 @@ export const rewardBanner = {
   subtitle: "Keep earning and keep growing.",
   image: chestImage,
 };
+
+export const historyLabels = {
+  title: "Recent Conversions",
+  viewAll: "View All",
+  viewFullHistory: "View Full History",
+};
