@@ -91,9 +91,15 @@
   }
 
   .visual img {
-    max-width: 16rem;
-    object-position: center;
+    max-width: 22rem;
     height: auto;
+    object-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .visual img {
+    max-width: 16rem;
   }
 }
 

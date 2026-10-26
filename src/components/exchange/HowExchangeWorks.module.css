@@ -104,11 +104,27 @@
 
 @media (max-width: 768px) {
   .steps {
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 1rem;
+  }
+
+  .step {
+    flex: 1 1 30%;
   }
 
   .step:not(:last-child)::after {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .steps {
+    flex-direction: column;
+  }
+
+  .step {
+    flex: none;
   }
 }

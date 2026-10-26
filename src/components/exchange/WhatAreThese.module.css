@@ -80,3 +80,11 @@
   height: 1rem;
   color: #a9afc3;
 }
+
+@media (min-width: 560px) and (max-width: 900px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
