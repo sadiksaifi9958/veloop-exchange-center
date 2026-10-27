@@ -43,6 +43,18 @@
   border-top: 2px dotted rgba(255, 255, 255, 0.25);
 }
 
+.step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(1.75rem - 0.225rem + 1px);
+  left: calc(150% - 2.4rem - 0.45rem);
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+  transform: rotate(45deg);
+}
+
 .circle {
   display: flex;
   align-items: center;
@@ -115,6 +127,10 @@
   }
 
   .step:not(:last-child)::after {
+    display: none;
+  }
+
+  .step:not(:last-child)::before {
     display: none;
   }
 }

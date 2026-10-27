@@ -28,21 +28,21 @@ function BalanceOverview({ balance }) {
     <section aria-label="Your Balance" className={styles.wrapper}>
       {balanceItems.map((item) => (
         <div key={item.id} className={`${styles.box} ${styles[item.theme]}`}>
-          <div className={styles.labelRow}>
-            <p>{item.title}</p>
-            <InfoTooltip
-              title={infoTooltip[item.infoKey].title}
-              text={infoTooltip[item.infoKey].text}
-              label={`About ${item.id}`}
-            />
-          </div>
-          <div className={styles.valueRow}>
-            <img src={item.image} className={styles.image} alt="" />
+          <img src={item.image} className={styles.image} alt="" />
+          <div className={styles.info}>
+            <div className={styles.labelRow}>
+              <p>{item.title}</p>
+              <InfoTooltip
+                title={infoTooltip[item.infoKey].title}
+                text={infoTooltip[item.infoKey].text}
+                label={`About ${item.id}`}
+              />
+            </div>
             <span className={styles.value}>
               {item.value.toLocaleString("en-US")}
             </span>
+            <p className={styles.subtitle}>{item.subtitle}</p>
           </div>
-          <p className={styles.subtitle}>{item.subtitle}</p>
           <div className={styles.imageWrap}>
             <img
               src={item.image}

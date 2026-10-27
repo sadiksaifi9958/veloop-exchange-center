@@ -53,7 +53,7 @@
 .image {
   position: absolute;
   top: 2rem;
-  right: 0;
+  right: 0.75rem;
   z-index: 0;
   height: 8rem;
   width: auto;

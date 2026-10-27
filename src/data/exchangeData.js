@@ -142,7 +142,7 @@ export const howExchangeWorks = [
     title: "Receive VEs",
     description: "VEs are added to your balance instantly.",
     image: veCoin,
-    theme: "gold",
+    theme: "green",
   },
 ];
 
@@ -180,12 +180,16 @@ export const whatAreThese = [
     name: "Gems",
     text: infoTooltip.gems.text,
     image: gemPurple,
+    theme: "purple",
+    infoKey: "gems",
   },
   {
     id: 2,
     name: "VEs",
     text: infoTooltip.ves.text,
     image: veCoin,
+    theme: "gold",
+    infoKey: "ves",
   },
 ];
 
