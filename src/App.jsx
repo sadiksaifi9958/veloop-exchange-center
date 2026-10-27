@@ -10,6 +10,7 @@ import {
   whatAreThese,
   historyLabels,
   statusConfig,
+  rulesImage,
 } from "./data/exchangeData";
 import ExchangeCard from "./components/exchange/ExchangeCard";
 import ExchangeModal from "./components/exchange/ExchangeModal";
@@ -134,7 +135,7 @@ function App() {
             labels={historyLabels}
             statusConfig={statusConfig}
           />
-          <ExchangeRules rules={exchangeRules} />
+          <ExchangeRules rules={exchangeRules} image={rulesImage} />
         </aside>
       </div>
       {selectedOption && (

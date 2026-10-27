@@ -3,7 +3,7 @@ import InfoTooltip from "./InfoTooltip";
 import { infoTooltip } from "../../data/exchangeData";
 import styles from "./ExchangeRules.module.css";
 
-function ExchangeRules({ rules }) {
+function ExchangeRules({ rules, image }) {
   return (
     <section className={styles.section} id="exchange-rules">
       <h2 className={styles.title}>
@@ -22,6 +22,7 @@ function ExchangeRules({ rules }) {
           </li>
         ))}
       </ul>
+      <img src={image} alt="" aria-hidden="true" className={styles.image} />
     </section>
   );
 }

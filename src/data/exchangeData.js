@@ -5,7 +5,8 @@ import gemOrange from "../assets/gems/orange-gem.webp";
 import veCoin from "../assets/coins/ve-coin.webp";
 import heroImage from "../assets/hero/portal.png";
 import { ListChecks, Search, ShieldCheck, Check, Clock, X } from "lucide-react";
-import chestImage from "../assets/hero/chest.png";
+import chestImage from "../assets/hero/chest.webp";
+import shieldImage from "../assets/hero/shield.webp";
 export const exchangeOptions = [
   {
     id: "exchange-01",
@@ -167,6 +168,8 @@ export const infoTooltip = {
     text: "Follow these 5 simple steps to convert your earned Gems into VEs.",
   },
 };
+
+export const rulesImage = shieldImage;
 
 export const veCoinImage = veCoin;
 export const gemPurpleImage = gemPurple;
