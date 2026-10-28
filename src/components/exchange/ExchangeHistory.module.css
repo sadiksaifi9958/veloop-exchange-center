@@ -92,14 +92,11 @@
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .item:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
 }
 
 .icons {

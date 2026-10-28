@@ -60,6 +60,15 @@
   padding-inline: 0.75rem;
 }
 
+.fill {
+  height: 100%;
+}
+
+.fill > * {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;

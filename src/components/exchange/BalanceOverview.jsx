@@ -2,6 +2,7 @@ import gemImage from "../../assets/gems/purple-gem.webp";
 import styles from "./BalanceOverview.module.css";
 import InfoTooltip from "./InfoTooltip";
 import { infoTooltip, veCoinImage } from "../../data/exchangeData";
+import AnimatedNumber from "./AnimatedNumber";
 
 function BalanceOverview({ balance }) {
   const balanceItems = [
@@ -39,7 +40,7 @@ function BalanceOverview({ balance }) {
               />
             </div>
             <span className={styles.value}>
-              {item.value.toLocaleString("en-US")}
+              <AnimatedNumber value={item.value} />
             </span>
             <p className={styles.subtitle}>{item.subtitle}</p>
           </div>

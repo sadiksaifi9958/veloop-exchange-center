@@ -26,6 +26,7 @@ import ExchangeStatus from "./components/exchange/ExchangeStatus";
 import ExchangeHero from "./components/exchange/ExchangeHero";
 import RewardBanner from "./components/exchange/RewardBanner";
 import WhatAreThese from "./components/exchange/WhatAreThese";
+import Reveal from "./components/exchange/Reveal";
 
 const VALID_STATES = ["loading", "error", "empty"];
 
@@ -41,16 +42,15 @@ function App() {
   const [completedOption, setCompletedOption] = useState(null);
   const forcedState = getForcedState();
   const [pageStatus, setPageStatus] = useState(forcedState ?? "loading");
+  const [history, setHistory] = useState(recentConversions);
+
   function handleConvert(option) {
     setSelectedOption(option);
   }
+
   function handleConfirm(option) {
     setIsProcessing(true);
     setTimeout(() => {
-      setBalance((prevBalance) => ({
-        gems: prevBalance.gems - option.requiredGems,
-        ves: prevBalance.ves + option.receiveVEs,
-      }));
       setSelectedOption(null);
       setIsProcessing(false);
       setCompletedOption(option);
@@ -58,6 +58,23 @@ function App() {
   }
 
   function onContinue() {
+    if (!completedOption) return;
+
+    setBalance((prevBalance) => ({
+      gems: prevBalance.gems - completedOption.requiredGems,
+      ves: prevBalance.ves + completedOption.receiveVEs,
+    }));
+    setHistory((prevHistory) => [
+      {
+        id: `history-${Date.now()}`,
+        gems: completedOption.requiredGems,
+        ves: completedOption.receiveVEs,
+        date: "Just now",
+        status: "Completed",
+        image: completedOption.image,
+      },
+      ...prevHistory.slice(0, 4),
+    ]);
     setCompletedOption(null);
   }
 
@@ -99,43 +116,58 @@ function App() {
   return (
     <>
       <div className={styles.top}>
-        <ExchangeHero balance={balance} />
-        <WhatAreThese items={whatAreThese} />
+        <Reveal delay={0} className={styles.fill}>
+          <ExchangeHero balance={balance} />
+        </Reveal>
+        <Reveal delay={0.15} className={styles.fill}>
+          <WhatAreThese items={whatAreThese} />
+        </Reveal>
       </div>
       <div className={styles.layout}>
         <div className={styles.main}>
-          <section className={styles.conversions}>
-            <h2 className={styles.heading}>
-              Available Conversions{" "}
-              <InfoTooltip
-                title={infoTooltip.exchangeRate.title}
-                text={infoTooltip.exchangeRate.text}
-                label="About Exchange rate"
-              />
-            </h2>
-            <p className={styles.subheading}>
-              Choose a conversion that works best for you.
-            </p>
-            <div className={styles.cardsGrid}>
-              {exchangeOptions.map((option) => (
-                <ExchangeCard
-                  key={option.id}
-                  option={option}
-                  onConvert={handleConvert}
+          <Reveal delay={0.3}>
+            <section className={styles.conversions}>
+              <h2 className={styles.heading}>
+                Available Conversions{" "}
+                <InfoTooltip
+                  title={infoTooltip.exchangeRate.title}
+                  text={infoTooltip.exchangeRate.text}
+                  label="About Exchange rate"
                 />
-              ))}
-            </div>
-          </section>
-          <RewardBanner content={rewardBanner} />
-          <HowExchangeWorks steps={howExchangeWorks} />
+              </h2>
+              <p className={styles.subheading}>
+                Choose a conversion that works best for you.
+              </p>
+              <div className={styles.cardsGrid}>
+                {exchangeOptions.map((option, index) => (
+                  <ExchangeCard
+                    key={option.id}
+                    option={option}
+                    onConvert={handleConvert}
+                    index={index}
+                  />
+                ))}
+              </div>
+            </section>
+          </Reveal>
+          <Reveal delay={0.45}>
+            <RewardBanner content={rewardBanner} />
+          </Reveal>
+          <Reveal delay={0.6}>
+            <HowExchangeWorks steps={howExchangeWorks} />
+          </Reveal>
         </div>
         <aside className={styles.side}>
-          <ExchangeHistory
-            items={recentConversions}
-            labels={historyLabels}
-            statusConfig={statusConfig}
-          />
-          <ExchangeRules rules={exchangeRules} image={rulesImage} />
+          <Reveal delay={0.3}>
+            <ExchangeHistory
+              items={history}
+              labels={historyLabels}
+              statusConfig={statusConfig}
+            />
+          </Reveal>
+          <Reveal delay={0.45}>
+            <ExchangeRules rules={exchangeRules} image={rulesImage} />
+          </Reveal>
         </aside>
       </div>
       {selectedOption && (
