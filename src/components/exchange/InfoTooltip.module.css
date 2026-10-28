@@ -40,8 +40,6 @@
   border-radius: 0.75rem;
   box-shadow: 0 0 1.5rem rgba(139, 92, 246, 0.25);
   text-align: left;
-  transform: translateX(-50%);
-  animation: fadeIn 0.2s ease;
 }
 
 .title {
@@ -57,13 +55,4 @@
   line-height: 1.5;
   color: #a9afc3;
   font-weight: 400;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
