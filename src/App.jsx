@@ -27,6 +27,7 @@ import ExchangeHero from "./components/exchange/ExchangeHero";
 import RewardBanner from "./components/exchange/RewardBanner";
 import WhatAreThese from "./components/exchange/WhatAreThese";
 import Reveal from "./components/exchange/Reveal";
+import { AnimatePresence } from "framer-motion";
 
 const VALID_STATES = ["loading", "error", "empty"];
 
@@ -170,18 +171,25 @@ function App() {
           </Reveal>
         </aside>
       </div>
-      {selectedOption && (
-        <ExchangeModal
-          option={selectedOption}
-          balance={balance}
-          onClose={() => setSelectedOption(null)}
-          onConfirm={handleConfirm}
-          isProcessing={isProcessing}
-        />
-      )}
-      {completedOption && (
-        <ConversionSuccess option={completedOption} onContinue={onContinue} />
-      )}
+      <AnimatePresence mode="wait">
+        {selectedOption && (
+          <ExchangeModal
+            option={selectedOption}
+            balance={balance}
+            onClose={() => setSelectedOption(null)}
+            onConfirm={handleConfirm}
+            isProcessing={isProcessing}
+            key={"confirm"}
+          />
+        )}
+        {completedOption && (
+          <ConversionSuccess
+            option={completedOption}
+            onContinue={onContinue}
+            key={"success"}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

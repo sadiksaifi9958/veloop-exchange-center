@@ -2,6 +2,7 @@ import { MoveDown } from "lucide-react";
 import { useEffect, useRef } from "react";
 import styles from "./ExchangeModal.module.css";
 import { veCoinImage } from "../../data/exchangeData";
+import { motion } from "framer-motion";
 
 function formatNumber(value) {
   return value.toLocaleString("en-US");
@@ -32,17 +33,25 @@ export default function ExchangeModal({
   }, [onClose, isProcessing]);
 
   return (
-    <div
+    <motion.div
       className={styles.overlay}
       onClick={isProcessing ? undefined : onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
     >
-      <div
+      <motion.div
         className={`${styles.modal} ${styles[option.theme]}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
         aria-busy={isProcessing}
         onClick={(event) => event.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.2 }}
       >
         {canAfford ? (
           <>
@@ -137,7 +146,7 @@ export default function ExchangeModal({
             </div>
           </>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
