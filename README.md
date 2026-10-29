@@ -4,8 +4,8 @@ A complete frontend redesign of the VELOOP Rewards **Exchange Center**, where us
 
 The page is designed as a **Reward Conversion Center**: premium, fintech-inspired, reward-focused and easy to understand for first-time users. It is **not** a crypto swap, trading screen or DeFi dashboard, and it deliberately avoids that visual and verbal language.
 
-> **Live Demo:** `https://your-project.vercel.app` (replace after deployment)
-> **Repository:** `https://github.com/your-username/veloop-exchange-center` (replace with your repository URL)
+> **Live Demo:** `https://veloop-exchange-center-rho.vercel.app/` 
+> **Repository:** `https://github.com/sadiksaifi9958/veloop-exchange-center`
 
 ---
 
