@@ -46,7 +46,7 @@
   flex-direction: column;
   gap: 0.6rem;
   margin: 0;
-  padding: 0 2rem 0 0;
+  padding: 0 3rem 0 0;
   list-style: none;
 }
 
@@ -55,7 +55,7 @@
   top: 2rem;
   right: 0.75rem;
   z-index: 0;
-  height: 8rem;
+  height: 6rem;
   width: auto;
   filter: brightness(0.75) drop-shadow(0 0 1rem rgba(139, 92, 246, 0.35));
   pointer-events: none;

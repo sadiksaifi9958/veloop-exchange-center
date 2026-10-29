@@ -49,7 +49,14 @@
 }
 
 @media (max-width: 600px) {
+  .banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .image {
-    height: 3.5rem;
+    width: 6rem;
+    height: auto;
+    align-self: flex-end;
   }
 }
