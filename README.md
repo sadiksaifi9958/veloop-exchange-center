@@ -199,7 +199,7 @@ All exchange components are in `src/components/exchange/`.
 ```
 veloop-exchange-center/
 ├── public/
-├── screenshots/
+├── docs/screenshots/
 ├── src/
 │   ├── assets/
 │   │   ├── gems/
@@ -240,7 +240,7 @@ Bootstrap's JavaScript is intentionally **not** used. The modals and tooltips ar
 **Prerequisites:** Node.js 18 or later and npm.
 
 ```bash
-git clone https://github.com/your-username/veloop-exchange-center.git
+git clone https://github.com/sadiksaifi9958/veloop-exchange-center.git
 cd veloop-exchange-center
 npm install
 ```
