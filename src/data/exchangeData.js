@@ -3,7 +3,7 @@ import gemBlue from "../assets/gems/blue-gem.webp";
 import gemGreen from "../assets/gems/green-gem.webp";
 import gemOrange from "../assets/gems/orange-gem.webp";
 import veCoin from "../assets/coins/ve-coin.webp";
-import heroImage from "../assets/hero/portal.png";
+import heroImage from "../assets/hero/portal.webp";
 import { ListChecks, Search, ShieldCheck, Check, Clock, X } from "lucide-react";
 import chestImage from "../assets/hero/chest.webp";
 import shieldImage from "../assets/hero/shield.webp";
