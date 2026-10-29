@@ -66,16 +66,16 @@ What a user should understand immediately:
 
 | View                  | Preview                                                        |
 | --------------------- | -------------------------------------------------------------- |
-| Desktop               | ![Desktop](./screenshots/01-desktop.png)                       |
-| Tablet                | ![Tablet](./screenshots/02-tablet.png)                         |
-| Mobile                | ![Mobile](./screenshots/03-mobile.png)                         |
-| Exchange cards        | ![Exchange cards](./screenshots/04-exchange-cards.png)         |
-| Confirmation modal    | ![Confirmation modal](./screenshots/05-confirmation-modal.png) |
-| Insufficient Gems     | ![Insufficient Gems](./screenshots/06-insufficient-gems.png)   |
-| Successful conversion | ![Successful conversion](./screenshots/07-success.png)         |
-| Loading state         | ![Loading state](./screenshots/08-loading.png)                 |
-| Empty state           | ![Empty state](./screenshots/09-empty.png)                     |
-| Error state           | ![Error state](./screenshots/10-error.png)                     |
+| Desktop               | ![Desktop](./docs/screenshots/desktop.png)                       |
+| Tablet                | ![Tablet](./docs/screenshots/tablet.jpeg)                         |
+| Mobile                | ![Mobile](./docs/screenshots/mobile.jpeg)                         |
+| Exchange cards        | ![Exchange cards](./docs/screenshots/cards.png)         |
+| Confirmation modal    | ![Confirmation modal](./docs/screenshots/modal.png) |
+| Insufficient Gems     | ![Insufficient Gems](./docs/screenshots/insufficient.png)   |
+| Successful conversion | ![Successful conversion](./docs/screenshots/success.png)         |
+| Loading state         | ![Loading state](./docs/screenshots/loading.png)                 |
+| Empty state           | ![Empty state](./docs/screenshots/empty.png)                     |
+| Error state           | ![Error state](./docs/screenshots/error.png)                     |
 
 ## Features
 
