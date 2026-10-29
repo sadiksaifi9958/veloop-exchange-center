@@ -55,7 +55,7 @@ function App() {
       setSelectedOption(null);
       setIsProcessing(false);
       setCompletedOption(option);
-    }, 1500);
+    }, 2500);
   }
 
   function onContinue() {
