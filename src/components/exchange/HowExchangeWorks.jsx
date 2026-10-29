@@ -28,7 +28,7 @@ function HowExchangeWorks({ steps }) {
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>
+      <h2 className={`d-flex align-items-center gap-2 ${styles.title}`}>
         How Exchange Works{" "}
         <button
           type="button"

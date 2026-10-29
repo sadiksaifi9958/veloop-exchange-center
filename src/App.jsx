@@ -116,60 +116,68 @@ function App() {
   }
   return (
     <>
-      <div className={styles.top}>
-        <Reveal delay={0} className={styles.fill}>
-          <ExchangeHero balance={balance} />
-        </Reveal>
-        <Reveal delay={0.15} className={styles.fill}>
-          <WhatAreThese items={whatAreThese} />
-        </Reveal>
-      </div>
-      <div className={styles.layout}>
-        <div className={styles.main}>
-          <Reveal delay={0.3}>
-            <section className={styles.conversions}>
-              <h2 className={styles.heading}>
-                Available Conversions{" "}
-                <InfoTooltip
-                  title={infoTooltip.exchangeRate.title}
-                  text={infoTooltip.exchangeRate.text}
-                  label="About Exchange rate"
-                />
-              </h2>
-              <p className={styles.subheading}>
-                Choose a conversion that works best for you.
-              </p>
-              <div className={styles.cardsGrid}>
-                {exchangeOptions.map((option, index) => (
-                  <ExchangeCard
-                    key={option.id}
-                    option={option}
-                    onConvert={handleConvert}
-                    index={index}
-                  />
-                ))}
-              </div>
-            </section>
+      <div className={`container py-4 ${styles.page}`}>
+        <div className="row g-3 mb-3">
+          <Reveal delay={0} className={`col-lg-9 ${styles.fill}`}>
+            <ExchangeHero balance={balance} />
           </Reveal>
-          <Reveal delay={0.45}>
-            <RewardBanner content={rewardBanner} />
-          </Reveal>
-          <Reveal delay={0.6}>
-            <HowExchangeWorks steps={howExchangeWorks} />
+          <Reveal delay={0.15} className={`col-lg-3 ${styles.fill}`}>
+            <WhatAreThese items={whatAreThese} />
           </Reveal>
         </div>
-        <aside className={styles.side}>
-          <Reveal delay={0.3}>
-            <ExchangeHistory
-              items={history}
-              labels={historyLabels}
-              statusConfig={statusConfig}
-            />
-          </Reveal>
-          <Reveal delay={0.45}>
-            <ExchangeRules rules={exchangeRules} image={rulesImage} />
-          </Reveal>
-        </aside>
+        <div className="row g-3">
+          <div className="col-lg-8">
+            <div className={styles.main}>
+              <Reveal delay={0.3}>
+                <section className={styles.conversions}>
+                  <h2
+                    className={`d-flex align-items-center gap-2 ${styles.heading}`}
+                  >
+                    Available Conversions{" "}
+                    <InfoTooltip
+                      title={infoTooltip.exchangeRate.title}
+                      text={infoTooltip.exchangeRate.text}
+                      label="About Exchange rate"
+                    />
+                  </h2>
+                  <p className={styles.subheading}>
+                    Choose a conversion that works best for you.
+                  </p>
+                  <div className={styles.cardsGrid}>
+                    {exchangeOptions.map((option, index) => (
+                      <ExchangeCard
+                        key={option.id}
+                        option={option}
+                        onConvert={handleConvert}
+                        index={index}
+                      />
+                    ))}
+                  </div>
+                </section>
+              </Reveal>
+              <Reveal delay={0.45}>
+                <RewardBanner content={rewardBanner} />
+              </Reveal>
+              <Reveal delay={0.6}>
+                <HowExchangeWorks steps={howExchangeWorks} />
+              </Reveal>
+            </div>
+          </div>
+          <aside className="col-lg-4">
+            <div className={styles.side}>
+              <Reveal delay={0.3}>
+                <ExchangeHistory
+                  items={history}
+                  labels={historyLabels}
+                  statusConfig={statusConfig}
+                />
+              </Reveal>
+              <Reveal delay={0.45}>
+                <ExchangeRules rules={exchangeRules} image={rulesImage} />
+              </Reveal>
+            </div>
+          </aside>
+        </div>
       </div>
       <AnimatePresence mode="wait">
         {selectedOption && (
