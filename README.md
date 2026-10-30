@@ -66,7 +66,7 @@ What a user should understand immediately:
 
 | View                  | Preview                                                        |
 | --------------------- | -------------------------------------------------------------- |
-| Desktop               | ![Desktop](./docs/screenshots/desktop.png)                       |
+| Desktop               | ![Desktop](./docs/screenshots/desktop.jpeg)                       |
 | Tablet                | ![Tablet](./docs/screenshots/tablet.jpeg)                         |
 | Mobile                | ![Mobile](./docs/screenshots/mobile.jpeg)                         |
 | Exchange cards        | ![Exchange cards](./docs/screenshots/cards.png)         |
