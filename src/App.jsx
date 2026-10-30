@@ -90,7 +90,7 @@ function App() {
 
     const timerId = setTimeout(() => {
       setPageStatus("ready");
-    }, 4000);
+    }, 2200);
 
     return () => clearTimeout(timerId);
   }, [pageStatus, forcedState]);
@@ -122,7 +122,7 @@ function App() {
   }
   return (
     <>
-      <div className={`container py-4 ${styles.page}`}>
+      <main className={`container py-4 ${styles.page}`}>
         <p className="visually-hidden" role="status" aria-live="polite">
           {announcement}
         </p>
@@ -188,7 +188,7 @@ function App() {
             </div>
           </aside>
         </div>
-      </div>
+      </main>
       <AnimatePresence mode="wait">
         {selectedOption && (
           <ExchangeModal
