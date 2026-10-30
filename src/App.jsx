@@ -44,6 +44,7 @@ function App() {
   const forcedState = getForcedState();
   const [pageStatus, setPageStatus] = useState(forcedState ?? "loading");
   const [history, setHistory] = useState(recentConversions);
+  const [announcement, setAnnouncement] = useState("");
 
   function handleConvert(option) {
     setSelectedOption(option);
@@ -76,6 +77,11 @@ function App() {
       },
       ...prevHistory.slice(0, 4),
     ]);
+    setAnnouncement(
+      `Conversion complete. You now have ${
+        balance.gems - completedOption.requiredGems
+      } Gems and ${balance.ves + completedOption.receiveVEs} VEs.`,
+    );
     setCompletedOption(null);
   }
 
@@ -117,6 +123,9 @@ function App() {
   return (
     <>
       <div className={`container py-4 ${styles.page}`}>
+        <p className="visually-hidden" role="status" aria-live="polite">
+          {announcement}
+        </p>
         <div className="row g-3 mb-3">
           <Reveal delay={0} className={`col-lg-9 ${styles.fill}`}>
             <ExchangeHero balance={balance} />
