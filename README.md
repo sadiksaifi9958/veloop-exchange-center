@@ -4,8 +4,9 @@ A complete frontend redesign of the VELOOP Rewards **Exchange Center**, where us
 
 The page is designed as a **Reward Conversion Center**: premium, fintech-inspired, reward-focused and easy to understand for first-time users. It is **not** a crypto swap, trading screen or DeFi dashboard, and it deliberately avoids that visual and verbal language.
 
-> **Live Demo:** `https://veloop-exchange-center-rho.vercel.app/` 
-> **Repository:** `https://github.com/sadiksaifi9958/veloop-exchange-center`
+> **Live Demo:** [https://veloop-exchange-center-rho.vercel.app/](https://veloop-exchange-center-rho.vercel.app/)
+>
+> **Repository:** [https://github.com/sadiksaifi9958/veloop-exchange-center](https://github.com/sadiksaifi9958/veloop-exchange-center)
 
 ---
 
@@ -64,18 +65,18 @@ What a user should understand immediately:
 
 ## Screenshots
 
-| View                  | Preview                                                        |
-| --------------------- | -------------------------------------------------------------- |
-| Desktop               | ![Desktop](./docs/screenshots/desktop.jpeg)                       |
-| Tablet                | ![Tablet](./docs/screenshots/tablet.jpeg)                         |
-| Mobile                | ![Mobile](./docs/screenshots/mobile.jpeg)                         |
-| Exchange cards        | ![Exchange cards](./docs/screenshots/cards.png)         |
-| Confirmation modal    | ![Confirmation modal](./docs/screenshots/modal.png) |
-| Insufficient Gems     | ![Insufficient Gems](./docs/screenshots/insufficient.png)   |
-| Successful conversion | ![Successful conversion](./docs/screenshots/success.png)         |
-| Loading state         | ![Loading state](./docs/screenshots/loading.png)                 |
-| Empty state           | ![Empty state](./docs/screenshots/empty.png)                     |
-| Error state           | ![Error state](./docs/screenshots/error.png)                     |
+| View                  | Preview                                                   |
+| --------------------- | --------------------------------------------------------- |
+| Desktop               | ![Desktop](./docs/screenshots/desktop.jpeg)               |
+| Tablet                | ![Tablet](./docs/screenshots/tablet.jpeg)                 |
+| Mobile                | ![Mobile](./docs/screenshots/mobile.jpeg)                 |
+| Exchange cards        | ![Exchange cards](./docs/screenshots/cards.png)           |
+| Confirmation modal    | ![Confirmation modal](./docs/screenshots/modal.png)       |
+| Insufficient Gems     | ![Insufficient Gems](./docs/screenshots/insufficient.png) |
+| Successful conversion | ![Successful conversion](./docs/screenshots/success.png)  |
+| Loading state         | ![Loading state](./docs/screenshots/loading.png)          |
+| Empty state           | ![Empty state](./docs/screenshots/empty.png)              |
+| Error state           | ![Error state](./docs/screenshots/error.png)              |
 
 ## Features
 
@@ -83,6 +84,7 @@ What a user should understand immediately:
 
 - Balance overview for Gems and VEs with animated count-up
 - Four conversion cards with theme colours, gem illustration, required Gems and VEs received
+- When the balance is too low, a card switches its action to _Earn More Gems_ and shows how many more Gems are needed
 - Confirmation modal showing the conversion and the balance **after** conversion
 - Insufficient Gems state with the exact number of missing Gems and an _Earn More Gems_ action
 - Premium success popup with a small reward burst
@@ -118,7 +120,7 @@ All exchange values live in a single data file, `src/data/exchangeData.js`. No e
 Rules implemented in the UI:
 
 1. A conversion is available only if `balance.gems >= requiredGems`.
-2. If not, the user sees the insufficient state with the missing amount (`requiredGems - balance.gems`) and the call to action changes to **Earn More Gems**.
+2. If not, the card and the modal show the missing amount (`requiredGems - balance.gems`) and the call to action changes to **Earn More Gems**.
 3. The confirmation modal previews the result: `gems - requiredGems` and `ves + receiveVEs`.
 4. On success, the balance is updated once, a new item is added to the top of Recent Conversions, and the list keeps the latest five entries.
 5. A conversion cannot be submitted twice while processing (see [User Flow](#user-flow)).
@@ -192,7 +194,9 @@ All exchange components are in `src/components/exchange/`.
 | `ExchangeStatus`    | Shared empty and error states                                |
 | `Reveal`            | Entrance animation wrapper                                   |
 
-`App.jsx` owns the application state (balance, selected option, processing flag, completed option, history and page status) and passes data and callbacks down as props.
+A shared hook, `src/hooks/useFocusTrap.js`, keeps keyboard focus inside an open modal and returns it to the triggering button when the modal closes.
+
+`App.jsx` owns the application state (balance, selected option, processing flag, completed option, history, page status and the screen reader announcement) and passes data and callbacks down as props.
 
 ## Project Structure
 
@@ -210,6 +214,8 @@ veloop-exchange-center/
 │   │       └── *.module.css
 │   ├── data/
 │   │   └── exchangeData.js
+│   ├── hooks/
+│   │   └── useFocusTrap.js
 │   ├── App.jsx
 │   ├── App.module.css
 │   ├── index.css
@@ -237,7 +243,7 @@ Bootstrap's JavaScript is intentionally **not** used. The modals and tooltips ar
 
 ## Installation
 
-**Prerequisites:** Node.js 18 or later and npm.
+**Prerequisites:** Node.js 20.19 or later and npm.
 
 ```bash
 git clone https://github.com/sadiksaifi9958/veloop-exchange-center.git
@@ -305,12 +311,15 @@ Animations are built with Framer Motion and use only `transform` and `opacity` (
 ## Accessibility
 
 - Modals use `role="dialog"`, `aria-modal`, `aria-labelledby`, move focus to a safe default action and close with **Esc**
+- Focus is trapped inside open modals (Tab and Shift+Tab stay within the dialog) and returns to the button that opened them
+- After a conversion, a visually hidden live region (`aria-live="polite"`) announces the new Gems and VEs balance to screen readers
 - Icon-only buttons (ⓘ) have `aria-label`; decorative icons use `aria-hidden`
 - Images have meaningful `alt` text, and decorative images use empty `alt`
 - Status badges combine colour, icon and text
 - Visible `:focus-visible` outlines on all interactive elements
 - Processing state is announced with `aria-busy`
 - Text colours are chosen for sufficient contrast on the dark background
+- Reduced-motion preference is respected across Framer Motion, CSS animations and the balance count-up
 
 ## Future Backend Integration
 
@@ -333,12 +342,14 @@ Recommended steps:
 
 ## Deployment
 
-The project is deployed on **Vercel**.
+The project is deployed on **Vercel**, and the live URL is listed at the top of this README.
+
+To deploy your own copy:
 
 1. Push the repository to GitHub.
 2. In Vercel, choose **Add New Project** and import the repository.
 3. Framework preset: **Vite**. Build command: `npm run build`. Output directory: `dist`.
-4. Deploy, then add the live URL at the top of this README.
+4. Deploy. Vercel rebuilds automatically on every push to the main branch.
 
 Files that are intentionally not committed: `node_modules`, `.env` and local build output (`dist`).
 
