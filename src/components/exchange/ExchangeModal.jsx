@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import styles from "./ExchangeModal.module.css";
 import { veCoinImage } from "../../data/exchangeData";
+import useFocusTrap from "../../hooks/useFocusTrap";
 
 const COIN_GLOW_OFF = "drop-shadow(0 0 0 rgba(245, 196, 81, 0))";
 const COIN_GLOW_ON = "drop-shadow(0 0 0.6rem rgba(245, 196, 81, 0.85))";
@@ -19,6 +20,8 @@ export default function ExchangeModal({
   isProcessing,
 }) {
   const initialFocusRef = useRef(null);
+  const dialogRef = useRef(null);
+  useFocusTrap(dialogRef);
   const canAfford = balance.gems >= option.requiredGems;
   const missingGems = option.requiredGems - balance.gems;
 
@@ -55,6 +58,8 @@ export default function ExchangeModal({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.2 }}
+        ref={dialogRef}
+        tabIndex={-1}
       >
         {canAfford ? (
           <>

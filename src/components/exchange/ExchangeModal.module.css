@@ -28,6 +28,10 @@
   text-align: center;
 }
 
+.modal:focus {
+  outline: none;
+}
+
 .title {
   margin: 0;
   font-size: 1.25rem;

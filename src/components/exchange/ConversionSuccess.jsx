@@ -3,12 +3,15 @@ import { motion, useIsPresent } from "framer-motion";
 import { CircleCheck, ArrowRight } from "lucide-react";
 import { veCoinImage } from "../../data/exchangeData";
 import styles from "./ConversionSuccess.module.css";
+import useFocusTrap from "../../hooks/useFocusTrap";
 
 const SPARK_COUNT = 6;
 
 function ConversionSuccess({ option, onContinue }) {
   const continueButtonRef = useRef(null);
   const isPresent = useIsPresent();
+  const dialogRef = useRef(null);
+  useFocusTrap(dialogRef);
 
   function handleContinue() {
     if (!isPresent) return;
@@ -47,6 +50,8 @@ function ConversionSuccess({ option, onContinue }) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.2 }}
+        ref={dialogRef}
+        tabIndex={-1}
       >
         <div className={styles.iconWrap}>
           <CircleCheck aria-hidden="true" size={40} className={styles.icon} />
