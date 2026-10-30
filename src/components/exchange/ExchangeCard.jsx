@@ -3,7 +3,9 @@ import styles from "./ExchangeCard.module.css";
 import { ArrowRight, MoveDown } from "lucide-react";
 import { motion } from "framer-motion";
 
-function ExchangeCard({ option, onConvert, index }) {
+function ExchangeCard({ option, onConvert, index, balance }) {
+  const canAfford = balance.gems >= option.requiredGems;
+  const missingGems = option.requiredGems - balance.gems;
   return (
     <motion.article
       className={`${styles.card} ${styles[option.theme]}`}
@@ -30,13 +32,20 @@ function ExchangeCard({ option, onConvert, index }) {
         <span className={styles.vecoin}>{option.receiveVEs} VEs</span>
       </div>
       <p className={styles.text}>{option.description}</p>
+      {!canAfford && (
+        <p className={styles.shortfall}>You need {missingGems} more Gems</p>
+      )}
       <button
-        className={styles.button}
+        className={`${styles.button} ${canAfford ? "" : styles.earnButton}`}
         onClick={() => onConvert(option)}
-        aria-label={`Convert Rewards for ${option.title}`}
+        aria-label={
+          canAfford
+            ? `Convert Rewards for ${option.title}`
+            : `Earn more Gems to unlock ${option.title}`
+        }
         type="button"
       >
-        Convert Rewards
+        {canAfford ? "Convert Rewards" : "Earn More Gems"}
       </button>
     </motion.article>
   );

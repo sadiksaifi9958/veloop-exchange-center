@@ -148,6 +148,7 @@ function App() {
                       <ExchangeCard
                         key={option.id}
                         option={option}
+                        balance={balance}
                         onConvert={handleConvert}
                         index={index}
                       />
